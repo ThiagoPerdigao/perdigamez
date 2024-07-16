@@ -1,0 +1,245 @@
+/* Definições gerais - Inicio */
+
+html{
+    height: 100%; 
+    width: 100%;
+ }
+
+ul, li {
+    font-size: 1.5rem;
+ }
+
+
+ body, p{
+     margin: 0px;
+     padding: 0px;
+     font-size: 1rem;
+     font-family: 'Saira Semi Condensed', sans-serif;
+ }
+ 
+ h1{
+     font-size: 110%;
+     text-align: center;
+     font-family: "Press Start 2P" !important;
+     
+ }
+
+ .titulos {
+    font-family: "Press Start 2P";
+ }
+ 
+ 
+ h2 {
+    text-align: center;
+ }
+ /* Definições gerais - Fim */
+ 
+ 
+ /* CSS Cabeçalho - Inicio */
+ 
+ .header a{
+     text-decoration: none;
+     color: rgb(0, 0, 0);
+     font-size: 2rem;
+     
+ }
+ 
+ .header{
+    background: #c7c7c7;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+ }
+ 
+ .menu{
+     display: flex;
+     position: absolute;
+        top: 10px;
+        left: 500px;
+        margin-left: 0px;
+ }
+ .pesquisa{
+    margin-top: 12px;
+ }
+ .menu li{
+     list-style: none;
+     margin-left: 10px;
+ }
+ 
+ /* CSS Cabeçalho - Fim */
+ 
+ /* CSS Rodapé - Inicio */
+ 
+
+  /* CSS Rodapé - Fim */
+ 
+ 
+ /* CSS Flexvbox 1 - Inicio */
+ 
+ .flex{
+     display: flex;
+     flex-wrap: wrap;
+     max-width: 800px;
+     margin: 0 auto;
+ }
+ 
+
+
+ .flex > div{
+     flex: 1 1 200px;
+     margin: 10px;
+ }
+ 
+ /* CSS Flexvbox 1 - Fim */
+ 
+  /* PUBLIS */
+
+  h6{
+    font-size: 120%;
+     text-align: center;
+  }
+    /* PUBLIS */
+    .publisher{
+        background-color: #c7c7c7 ;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+  
+.fa {
+  padding: 5px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+
+}
+
+.jogx {
+    text-align:left;
+    font-size: 1.3rem;
+    
+}
+
+.maisdet {
+    font-size: 1.3rem;
+}
+
+
+
+
+
+
+footer{
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #c7c7c7;
+    height: auto;
+    width: 100%;
+    padding-top: 40px;
+    color: rgb(0, 0, 0);
+}
+.footer-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+.footer-content h3{
+    font-size: 2.1rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    line-height: 3rem;
+}
+.footer-content p{
+    max-width: 500px;
+    margin: 10px auto;
+    line-height: 28px;
+    font-size: 14px;
+    color: #000000;
+}
+.socials{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0 3rem 0;
+}
+.socials li{
+    margin: 0 10px;
+}
+.socials a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    border: 1.1px solid rgb(0, 0, 0);
+    padding: 5px;
+
+    border-radius: 50%;
+
+}
+.socials a i{
+    font-size: 1.1rem;
+    width: 20px;
+
+
+    transition: color .4s ease;
+
+}
+.socials a:hover i{
+    color: aqua;
+}
+
+.footer-bottom{
+    background: #bbbbbb ;
+    width: 100%;
+    padding: 20px;
+padding-bottom: 40px;
+    text-align: center;
+}
+.footer-bottom p{
+float: left;
+    font-size: 14px;
+    word-spacing: 2px;
+    text-transform: capitalize;
+}
+.footer-bottom p a{
+  color:#000000;
+  font-size: 16px;
+  text-decoration: none;
+}
+.footer-bottom span{
+    text-transform: uppercase;
+    opacity: .4;
+    font-weight: 200;
+}
+.footer-menu{
+  float: right;
+
+}
+.footer-menu ul{
+  display: flex;
+}
+.footer-menu ul li{
+padding-right: 10px;
+display: block;
+}
+.footer-menu ul li a{
+  color: #000000;
+  text-decoration: none;
+}
+.footer-menu ul li a:hover{
+  color: aqua;
+}
+      
+@media (max-width:500px) {
+.footer-menu ul{
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+}
+

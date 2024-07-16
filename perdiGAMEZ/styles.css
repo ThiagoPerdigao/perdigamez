@@ -1,0 +1,171 @@
+body {
+    background-color: rgb(31, 31, 46) !important;
+    overflow-x: hidden;
+    font-family: 'Tomorrow', sans-serif !important;
+}
+
+.cardDestaque {
+    overflow: hidden;
+    position: relative;
+}
+
+.cardDestaque .card-img {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.card {
+    max-width: 30vw; /* Largura máxima de 40vw */
+    max-height: 30vh;
+    border: none !important;
+}
+
+.card-body{
+    background-color: rgb(47, 47, 70) !important;
+    color:ghostwhite;
+    font-size: 1.1rem;
+}
+
+.card-title {
+    font-size: 1.4rem;
+}
+
+.list-group-item{
+    background-color: rgb(47, 47, 70) !important;
+    color:ghostwhite;
+    font-size: 1.1rem !important;
+}
+
+.cardDestaque:hover .card-img {
+    transform: scale(1.1);
+}
+
+
+.cardDestaque .card-img-overlay {
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro semi-transparente */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+.pesquisa {
+    width: 60vw;
+}
+
+.form-control {
+    background-color:rgb(47, 47, 70) !important;
+}
+
+input:focus {
+    outline: none !important;
+  }
+
+  
+  
+.btn:hover {
+    filter: brightness(50%);
+    transition: 0.5s;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+    justify-content: center !important;
+    display: flex;
+  }
+  
+  .swiper-slide {
+    width: 33vw; /* Cada slide ocupa 33% da largura da viewport */
+    max-width: 33vw;
+}
+
+
+
+.swiper-button-next, .swiper-button-prev {
+    color: #fff !important; /* Cor branca para as setas */
+}
+
+
+.cardDestaque-small {
+  width: 12rem; /* Ajuste conforme necessário para reduzir o tamanho dos cards */
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  display: none; /* Esconda os botões por padrão */
+}
+
+
+.cardPesquisa:hover .card-img {
+    transform: scale(1.1);
+}
+
+
+.cardPesquisa .card-img-overlay {
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro semi-transparente */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.cardPesquisa {
+    overflow: hidden;
+    position: relative;
+    max-width: 20vw; /* Largura máxima de 40vw */
+    max-height: 20vh;
+    border: none !important;
+}
+
+.cardPesquisa .card-img {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+/* Ajustar a posição das setas */
+.swiper-button-next, .swiper-button-prev {
+    top: 10%;
+    transform: translateY(-50%);
+}
+
+
+
+.detalhestext {
+    font-size: 1.5rem !important;
+}
+
+.detalhestitle {
+    font-size: 2rem !important;
+}
+
+.cardDetalhes {
+    width: 100% !important; 
+}
+
+
+.carousel-inner img {
+    max-width: 60vw;
+    min-width: 60vw; 
+    width: 60%; 
+    height: auto;
+    min-height: 40vw; 
+    object-fit: cover; 
+    border-radius: 15px 15px 0px 0px;
+}
+
+.custom-card {
+    background-color: rgb(47, 47, 70);
+    color: ghostwhite;
+    font-family: 'Tomorrow', sans-serif;
+    border-radius: 0px 0px 15px 15px;
+    overflow: hidden;
+    position: relative;
+    max-width: 60vw; 
+    margin: 0 auto; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    margin-bottom: 200px;
+}
