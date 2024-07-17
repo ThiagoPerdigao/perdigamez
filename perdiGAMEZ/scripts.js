@@ -1,7 +1,7 @@
 const apiKey = '3ab23716238f4a32b8f746f65f42b448';
 
 
-//função exibir jogo do mês em destaque
+//função exibir jogo do mês em destaque, desimplementada
 document.addEventListener('DOMContentLoaded', function () {
     fetch('https://api.rawg.io/api/games?key=3ab23716238f4a32b8f746f65f42b448')
       .then(response => response.json())
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
           fetch(`https://api.rawg.io/api/games/${jogoMensal.id}?key=3ab23716238f4a32b8f746f65f42b448`)
             .then(response => response.json())
             .then(jogoDoMes => {
-              // Adiciona os detalhes do jogo mensal ao elemento com o ID 'mensal'
+              
               $("#mensal").append(`
                   <div class="col-lg-6 col-sm-12 col-md-6">
                     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
@@ -79,17 +79,17 @@ document.addEventListener('DOMContentLoaded', function () {
       .then(data => {
         const resultadoLancamento = data.results;
 
-        // Gera um número aleatório entre 0 e 18
+      
         const numeroAleatorio = gerarNumeroAleatorio();
 
-        // Define a constante numeroFinal como numeroAleatorio + 3
+      
         const numeroFinal = numeroAleatorio + 3;
 
-        // Loop for usando os valores gerados
+        
         for (let i = numeroAleatorio; i < numeroFinal; i++) {
           const lancamento = resultadoLancamento[i];
   
-          // Obtém a classificação do lançamento (substitua pela sua lógica)
+          
           const classificacao = lancamento.rating || 0;
   
           const genre1 = lancamento.genres[0] ? lancamento.genres[0].name : 'Gênero não disponível';
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
           const estrelasHtml = criarIconesEstrela(classificacao);
   
           document.getElementById('destaques').innerHTML += `
-            <a href="details.html?jogo=${lancamento.id}" class="cardDestaque card bg-dark text-white mr-4 mt-5 mb-5" style="text-decoration: none;">
+            <a href="details.html?jogo=${lancamento.id}" class="cardDestaque card bg-dark text-white mx-auto " style="text-decoration: none;">
               <img class="card-img" src="${lancamento.short_screenshots[0].image}" alt="Card image">
               <div class="card-img-overlay">
                 <div class="text-overlay">
@@ -188,21 +188,32 @@ function criarIconesEstrela(classificacao) {
         const numeroAleatorio = 0;
         const numeroFinal = numeroAleatorio + 3;
   
-        // Loop for usando os valores gerados
+        
         for (let i = numeroAleatorio; i < numeroFinal; i++) {
           let plataforma = data.results[i];
   
+          // Construindo a lista de jogos com abreviação se necessário
+          let gamesList = '';
+          for (let j = 0; j < 3; j++) {
+            if (plataforma.games[j]) {
+              let gameName = plataforma.games[j].name.length > 20 ? plataforma.games[j].name.substring(0, 20) + '...' : plataforma.games[j].name;
+              gamesList += `<li class="list-group-item">${gameName}</li>`;
+            } else {
+              gamesList += `<li class="list-group-item">N/A</li>`;
+            }
+          }
+  
           document.getElementById('plataforma').innerHTML += `
-            <div class="cardPlataforma card d-flex flex-row mr-4 mt-5 mb-5">
-              <img class="card-img-left" src="images/platform/${plataforma.name}.jpg"   style="width: 40%; max-height: 25vh;" alt="Card image cap">
-              <div class="d-flex flex-column" style="width: 60%;">
+            <div class="cardPlataforma card d-flex flex-column flex-md-row mr-4 mt-5 mb-5">
+              <div class="card-img-container">
+                <img class="card-img-left img-fluid" src="images/platform/${plataforma.name}.png" alt="Card image cap">
+              </div>
+              <div class="d-flex flex-column flex-grow-1">
                 <div class="card-body">
                   <h5 class="card-title">${plataforma.name}</h5>
                   <p class="card-text"> </p>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item">${plataforma.games[0] ? plataforma.games[0].name : 'No game available'}</li>
-                    <li class="list-group-item">${plataforma.games[1] ? plataforma.games[1].name : 'No game available'}</li>
-                    <li class="list-group-item">${plataforma.games[2] ? plataforma.games[2].name : 'No game available'}</li>
+                    ${gamesList}
                   </ul>
                 </div>
               </div>
@@ -213,7 +224,9 @@ function criarIconesEstrela(classificacao) {
       .catch(error => {
         console.error('Erro ao buscar dados da API:', error);
       });
-  });
+});
+
+
   
   
 
@@ -224,66 +237,53 @@ function gerarNumeroAleatorioPlataforma() {
 
   document.addEventListener('DOMContentLoaded', function () {
     fetch('https://api.rawg.io/api/developers?key=3ab23716238f4a32b8f746f65f42b448')
-      .then(response => response.json())
-      .then(data => {
-        let firstRowContent = '';
-        let secondRowContent = '';
-  
-        // Loop for usando os valores gerados
-        for (let i = 0; i < 10; i++) {
-          let desenvolvedora = data.results[i];
-          
-          // Pega o nome da desenvolvedora e garante que tenha no máximo duas palavras
-          let nomeDesenvolvedora = desenvolvedora.name.split(' ').slice(0, 2).join(' ');
-  
-          // Pega a primeira palavra do nome da desenvolvedora para a imagem
-          let primeiraPalavraNome = nomeDesenvolvedora.split(' ')[0];
-  
-          // Constrói o card na nova estrutura
-          let gamesList = '';
-          for (let j = 0; j < 3; j++) {
-            if (desenvolvedora.games[j]) {
-              let gameName = desenvolvedora.games[j].name.length > 20 ? desenvolvedora.games[j].name.substring(0, 20) + '...' : desenvolvedora.games[j].name;
-              gamesList += `<li class="list-group-item">${gameName}</li>`;
-            } else {
-              gamesList += `<li class="list-group-item">N/A</li>`;
+        .then(response => response.json())
+        .then(data => {
+            let cardsContent = '';
+
+            for (let i = 0; i < 10; i++) {
+                let desenvolvedora = data.results[i];
+
+                let nomeDesenvolvedora = desenvolvedora.name.split(' ').slice(0, 2).join(' ');
+                let primeiraPalavraNome = nomeDesenvolvedora.split(' ')[0];
+
+                let gamesList = '';
+                for (let j = 0; j < 3; j++) {
+                    if (desenvolvedora.games[j]) {
+                        let gameName = desenvolvedora.games[j].name.length > 20 ? desenvolvedora.games[j].name.substring(0, 20) + '...' : desenvolvedora.games[j].name;
+                        gamesList += `<li class="list-group-item">${gameName}</li>`;
+                    } else {
+                        gamesList += `<li class="list-group-item">N/A</li>`;
+                    }
+                }
+
+                let cardContent = `
+                    <div class="col-md-2 mb-3 cardPublisher-col">
+                        <div class="cardPublisher">
+                            <img class="card-img-top" src="images/publisher/${primeiraPalavraNome}.png" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">${nomeDesenvolvedora}</h5>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                ${gamesList}
+                            </ul>
+                        </div>
+                    </div>
+                `;
+
+                cardsContent += cardContent;
             }
-          }
-  
-          let cardContent = `
-            <div class="col-md-2 mb-3 m-3 mt-5">
-              <div class="card mr-5" style="width: 18rem;  height: 30rem;">
-                <img class="card-img-top" src="images/publisher/${primeiraPalavraNome}.jpg" onerror="this.onerror=null; this.src='images/publisher/${primeiraPalavraNome}.jpeg'" style="max-height: 15vh !important; max-width: 20vw;" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">${nomeDesenvolvedora}</h5>
+
+            document.getElementById('publishers').innerHTML = `
+                <div class="row justify-content-center mb-5">
+                    ${cardsContent}
                 </div>
-                <ul class="list-group list-group-flush">
-                  ${gamesList}
-                </ul>
-              </div>
-            </div>
-          `;
-  
-          if (i < 5) {
-            firstRowContent += cardContent;
-          } else {
-            secondRowContent += cardContent;
-          }
-        }
-  
-        document.getElementById('publishers').innerHTML = `
-          <div class="row justify-content-center mb-5">
-            ${firstRowContent}
-          </div>
-          <div class="row justify-content-center publisherBaixa mt-5 mb-5">
-            ${secondRowContent}
-          </div>
-        `;
-      })
-      .catch(error => {
-        console.error('Erro ao buscar dados da API:', error);
-      });
-  });
+            `;
+        })
+        .catch(error => {
+            console.error('Erro ao buscar dados da API:', error);
+        });
+});
   
   
   document.addEventListener('DOMContentLoaded', function () {
@@ -333,7 +333,7 @@ function gerarNumeroAleatorioPlataforma() {
         }
   
         if (jogos.length > 0) {
-            // Remove hidden attribute from Swiper navigation buttons
+            // Remove hidden attribute 
             nextButton.hidden = false;
             prevButton.hidden = false;
             resultsTitle.hidden = false;
