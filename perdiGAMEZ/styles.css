@@ -26,17 +26,15 @@ body {
 .card-body {
     background-color: rgb(47, 47, 70) !important;
     color: ghostwhite;
-    font-size: 1.1rem;
 }
 
 .card-title {
-    font-size: 1.4rem;
+    font-size: 1rem;
 }
 
 .list-group-item {
     background-color: rgb(47, 47, 70) !important;
     color: ghostwhite;
-    font-size: 1.1rem !important;
 }
 
 .cardDestaque:hover .card-img {
@@ -105,16 +103,20 @@ input:focus {
     overflow: hidden;
     position: relative;
     max-width: 20vw;
-    max-height: 20vh;
+    height: 20vh; /* Ajustar altura fixa para 20vh */
     border: none !important;
 }
 
 .cardPesquisa .card-img {
     width: 100%;
-    height: 100%;
+    height: 60%; /* Altura da imagem dentro do card */
     transition: transform 0.3s ease;
     border-radius: 5px;
     object-fit: cover;
+}
+
+.cardPesquisa .card-body {
+    height: 40%; /* O restante da altura será usado pelo corpo do card */
 }
 
 /* Ajustar a posição das setas */
@@ -158,109 +160,3 @@ input:focus {
     margin-bottom: 200px;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    .card {
-        max-width: 90vw;
-        max-height: none;
-    }
-    
-    .cardPlataforma {
-        flex-direction: column !important;
-        background-color: aquamarine !important;
-    }
-
-    .detalhestext {
-        font-size: 0.6rem !important;
-    }
-    
-    .detalhestitle {
-        font-size: 1.2rem !important;
-    }
-    
-    .card-img-left {
-        max-width: 100%;
-        max-height: none;
-    }
-}
-
-.publishers {
-    max-width: 80%;
-}
-
-.cardPublisher-col {
-    flex: 0 0 20%;
-    max-width: 20%;
-}
-
-.cardPublisher {
-    width: 100%;
-    height: 100%;
-    border: none !important;
-    background-color: rgb(47, 47, 70);
-    color: ghostwhite;
-    font-family: 'Tomorrow', sans-serif;
-    margin-bottom: 30px;
-    max-width: 18rem;
-    max-height: 30rem;
-}
-
-.cardPublisher .card-img-top {
-    max-height: 20vh !important;
-    width: 100%;
-    object-fit: cover;
-}
-
-.cardPublisher .card-body {
-    background-color: rgb(47, 47, 70);
-    color: ghostwhite;
-    font-size: 1.1rem;
-}
-
-.cardPublisher .card-title {
-    font-size: 1.4rem;
-}
-
-.cardPublisher .list-group-item {
-    background-color: rgb(47, 47, 70);
-    color: ghostwhite;
-    font-size: 1.1rem !important;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .cardPublisher-col {
-        flex: 0 0 50%;
-        max-width: 50%;
-    }
-}
-
-@media (max-width: 576px) {
-    .cardPublisher-col {
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
-}
-
-
-
-.cardPlataforma .card-img-left {
-  max-width: 30vh;
-  height: auto;
-}
-
-.cardPlataforma .card-body {
-  background-color: rgb(47, 47, 70) !important;
-  color: ghostwhite;
-  font-size: 1.1rem;
-}
-
-.cardPlataforma .card-title {
-  font-size: 1.4rem;
-}
-
-.cardPlataforma .list-group-item {
-  background-color: rgb(47, 47, 70) !important;
-  color: ghostwhite;
-  font-size: 1.1rem !important;
-}

@@ -188,34 +188,15 @@ function criarIconesEstrela(classificacao) {
         const numeroAleatorio = 0;
         const numeroFinal = numeroAleatorio + 3;
   
-        
         for (let i = numeroAleatorio; i < numeroFinal; i++) {
           let plataforma = data.results[i];
   
-          // Construindo a lista de jogos com abreviação se necessário
-          let gamesList = '';
-          for (let j = 0; j < 3; j++) {
-            if (plataforma.games[j]) {
-              let gameName = plataforma.games[j].name.length > 20 ? plataforma.games[j].name.substring(0, 20) + '...' : plataforma.games[j].name;
-              gamesList += `<li class="list-group-item">${gameName}</li>`;
-            } else {
-              gamesList += `<li class="list-group-item">N/A</li>`;
-            }
-          }
-  
+          // Substituí o card de plataforma pelo novo modelo
           document.getElementById('plataforma').innerHTML += `
-            <div class="cardPlataforma card d-flex flex-column flex-md-row mr-4 mt-5 mb-5">
-              <div class="card-img-container">
-                <img class="card-img-left img-fluid" src="images/platform/${plataforma.name}.png" alt="Card image cap">
-              </div>
-              <div class="d-flex flex-column flex-grow-1">
-                <div class="card-body">
-                  <h5 class="card-title">${plataforma.name}</h5>
-                  <p class="card-text"> </p>
-                  <ul class="list-group list-group-flush">
-                    ${gamesList}
-                  </ul>
-                </div>
+            <div class="card m-5" style="width: 15rem;">
+              <img class="card-img-top" src="images/platform/${plataforma.name}.png" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">${plataforma.name}</h5>
               </div>
             </div>
           `;
@@ -224,7 +205,7 @@ function criarIconesEstrela(classificacao) {
       .catch(error => {
         console.error('Erro ao buscar dados da API:', error);
       });
-});
+  });
 
 
   
@@ -240,50 +221,42 @@ function gerarNumeroAleatorioPlataforma() {
         .then(response => response.json())
         .then(data => {
             let cardsContent = '';
-
-            for (let i = 0; i < 10; i++) {
+  
+            for (let i = 0; i < 9; i++) {
                 let desenvolvedora = data.results[i];
-
                 let nomeDesenvolvedora = desenvolvedora.name.split(' ').slice(0, 2).join(' ');
                 let primeiraPalavraNome = nomeDesenvolvedora.split(' ')[0];
-
-                let gamesList = '';
-                for (let j = 0; j < 3; j++) {
-                    if (desenvolvedora.games[j]) {
-                        let gameName = desenvolvedora.games[j].name.length > 20 ? desenvolvedora.games[j].name.substring(0, 20) + '...' : desenvolvedora.games[j].name;
-                        gamesList += `<li class="list-group-item">${gameName}</li>`;
-                    } else {
-                        gamesList += `<li class="list-group-item">N/A</li>`;
-                    }
-                }
-
+  
+                // Substituí o card de publisher pelo novo modelo, limitando 3 por linha
                 let cardContent = `
-                    <div class="col-md-2 mb-3 cardPublisher-col">
-                        <div class="cardPublisher">
+                    <div class="col-md-4 mb-3 cardPublisher-col">
+                        <div class="card m-5" style="width: 15rem;">
                             <img class="card-img-top" src="images/publisher/${primeiraPalavraNome}.png" alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title">${nomeDesenvolvedora}</h5>
                             </div>
-                            <ul class="list-group list-group-flush">
-                                ${gamesList}
-                            </ul>
                         </div>
                     </div>
                 `;
-
+  
+                // A cada 3 cards, insere uma nova row
+                if (i % 3 === 0) {
+                    cardsContent += `<div class="row justify-content-center mt-5 mb-5" style="margin-top: 15rem;"">`;
+                }
                 cardsContent += cardContent;
+                
+                if (i % 3 === 2 || i === data.results.length - 1) {
+                    cardsContent += `</div>`;
+                }
             }
-
-            document.getElementById('publishers').innerHTML = `
-                <div class="row justify-content-center mb-5">
-                    ${cardsContent}
-                </div>
-            `;
+  
+            document.getElementById('publishers').innerHTML = cardsContent;
         })
         .catch(error => {
             console.error('Erro ao buscar dados da API:', error);
         });
 });
+
   
   
   document.addEventListener('DOMContentLoaded', function () {
