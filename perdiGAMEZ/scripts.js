@@ -193,7 +193,7 @@ function criarIconesEstrela(classificacao) {
   
           // Substituí o card de plataforma pelo novo modelo
           document.getElementById('plataforma').innerHTML += `
-            <div class="card m-5" style="width: 15rem;">
+            <div class="card m-5" style="width: 45vh;">
               <img class="card-img-top" src="images/platform/${plataforma.name}.png" alt="Card image cap">
               <div class="card-body">
                 <h5 class="card-title">${plataforma.name}</h5>
@@ -230,7 +230,7 @@ function gerarNumeroAleatorioPlataforma() {
                 // Substituí o card de publisher pelo novo modelo, limitando 3 por linha
                 let cardContent = `
                     <div class="col-md-4 mb-3 cardPublisher-col">
-                        <div class="card m-5" style="width: 15rem;">
+                        <div class="card m-5" style="width: 40vh; margin-bottom: 15vh;">
                             <img class="card-img-top" src="images/publisher/${primeiraPalavraNome}.png" alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title">${nomeDesenvolvedora}</h5>
@@ -241,7 +241,7 @@ function gerarNumeroAleatorioPlataforma() {
   
                 // A cada 3 cards, insere uma nova row
                 if (i % 3 === 0) {
-                    cardsContent += `<div class="row justify-content-center mt-5 mb-5" style="margin-top: 15rem;"">`;
+                    cardsContent += `<div class="row justify-content-center  mt-5 mb-5" style="margin-top: 15rem;"">`;
                 }
                 cardsContent += cardContent;
                 
